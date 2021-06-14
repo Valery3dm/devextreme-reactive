@@ -1,11 +1,17 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import TestTable from './testTable';
+import GridTable from './components/gridTable';
+import NavBar from './components/navBar';
 
 const App = () => (
-  <div className="App">
-    <TestTable />
-  </div>
+  <Router>
+    <NavBar />
+    <Switch>
+      <Route exact path="/" component={GridTable} />
+      <Route exact path="/grid" component={GridTable} />
+    </Switch>
+  </Router>
 );
 
 export default App;

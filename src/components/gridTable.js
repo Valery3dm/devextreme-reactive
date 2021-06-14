@@ -23,11 +23,11 @@ import {
 
 import '@devexpress/dx-react-grid-bootstrap4/dist/dx-react-grid-bootstrap4.css';
 
-import data from './dataForTest';
+import data from '../dataForTest';
 
 const getRowId = row => row.id;
 
-const TestTable = () => {
+const GridTable = () => {
 
   const [columns] = useState([
     { name: "id", title: "ID" },
@@ -94,74 +94,50 @@ const TestTable = () => {
         columns={columns}
         getRowId={getRowId}
       >
-        
-
-        <VirtualTable>save</VirtualTable>
-
+        <VirtualTable/>
         <SearchState />
         <IntegratedFiltering />
-
-
         <EditingState
           onCommitChanges={commitChanges}
           defaultEditingRowIds={[0]}
           columnExtensions={editingStateColumnExtensions}
         />
-
-
         <PagingState
           defaultCurrentPage={0}
           defaultPageSize={5}
         />
         <IntegratedPaging />
-
-
         <SortingState
           defaultSorting={[{ columnName: 'city', direction: 'asc' }]}
         />
         <IntegratedSorting />
-
-
         <Table 
           columnExtensions={tableColumnExtensions}
         />
         <TableHeaderRow
           showSortingControls
         />
-
-
         <TableEditRow />
         <TableEditColumn
           showAddCommand
           showEditCommand
           showDeleteCommand
         />
-
-
         <PagingPanel
           pageSizes={pageSizes}
         />
-
-
         <Toolbar />
         <SearchPanel />
-
-
         <ExportPanel startExport={startExport}/>
-
-
       </Grid>
-
-
       <GridExporter
         ref={exporterRef}
         rows={rows}
         columns={columns}
         onSave={onSave}
       />
-
     </div>
   );
 };
 
-export default TestTable;
+export default GridTable;
