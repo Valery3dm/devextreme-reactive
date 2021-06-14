@@ -23,7 +23,7 @@ import {
 
 import '@devexpress/dx-react-grid-bootstrap4/dist/dx-react-grid-bootstrap4.css';
 
-import data from '../dataForTest';
+import data from '../data/dataForGrid';
 
 const getRowId = row => row.id;
 

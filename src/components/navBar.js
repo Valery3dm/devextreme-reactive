@@ -11,6 +11,9 @@ const NavBar = () => (
             <li class="nav-item active">
                 <a class="nav-link" href="/grid">Grid</a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/chart">Chart</a>
+            </li>
         </ul>
         </div>
     </nav>
