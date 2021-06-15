@@ -4,53 +4,59 @@ import {
   ArgumentAxis,
   ValueAxis,
   BarSeries,
-  SplineSeries,
-  Legend,
 } from '@devexpress/dx-react-chart-bootstrap4';
 import '@devexpress/dx-react-chart-bootstrap4/dist/dx-react-chart-bootstrap4.css';
-import { ValueScale, Animation } from '@devexpress/dx-react-chart';
 
-import { sales as data } from '../data/dataForChart';
+import { scaleBand } from '@devexpress/dx-chart-core';
+import { ArgumentScale, Stack } from '@devexpress/dx-react-chart';
+
+import { ageStructure } from '../data/dataForChart';
+import data from '../data/dataForGrid';
 
 export default class ChartTable extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      data: data[2017],
+      data: ageStructure,
+      data1: data
     };
   }
 
   render() {
-    const { data: chartData } = this.state;
+    const { data1 } = this.state;
+
+    const sortedDataByCreatedAtValue = data1.sort((a, b) =>
+      a.created_at > b.created_at ? 1 
+      : b.created_at > a.created_at ? -1 
+      : 0
+    );
 
     return (
       <div className="card">
         <Chart
-          data={chartData}
+          data={sortedDataByCreatedAtValue}
         >
-          <ValueScale name="sale" />
-          <ValueScale name="total" />
-
+          <ArgumentScale factory={scaleBand} />
           <ArgumentAxis />
-          <ValueAxis scaleName="sale" showGrid={false} showLine showTicks />
-          <ValueAxis scaleName="total" position="right" showGrid={false} showLine showTicks />
+          <ValueAxis />
 
           <BarSeries
-            name="Units Sold"
-            valueField="sale"
-            argumentField="month"
-            scaleName="sale"
+            valueField="created_at"
+            argumentField="country"
+            name="Young"
           />
-
-          <SplineSeries
-            name="Total Transactions"
-            valueField="total"
-            argumentField="month"
-            scaleName="total"
+          <BarSeries
+            valueField="created_at"
+            argumentField="country"
+            name="Middle"
           />
-          <Animation />
-          <Legend />
+          <BarSeries
+            valueField="created_at"
+            argumentField="country"
+            name="Older"
+          />
+          <Stack />
         </Chart>
       </div>
     );
