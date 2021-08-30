@@ -5,6 +5,7 @@ import ChartTable from './components/chartTable';
 import GridTable from './components/gridTable';
 import NavBar from './components/navBar';
 import Demo from './components/schedulerTable';
+import TodoList from './components/TodoList';
 
 const App = () => (
   <Router>
@@ -14,6 +15,7 @@ const App = () => (
       <Route exact path="/grid" component={GridTable} />
       <Route exact path="/chart" component={ChartTable} />
       <Route exact path="/scheduler" component={Demo} />
+      <Route exact path="/core" component={TodoList} />
     </Switch>
   </Router>
 );

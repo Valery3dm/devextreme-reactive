@@ -17,6 +17,9 @@ const NavBar = () => (
             <li className="nav-item active">
                 <a className="nav-link" href="/scheduler">Scheduler</a>
             </li>
+            <li className="nav-item active">
+                <a className="nav-link" href="/core">Core</a>
+            </li>
         </ul>
         </div>
     </nav>
